@@ -1,0 +1,17 @@
+name: wakeup-sonar
+description: "Wake up a sonar instance"
+
+inputs:
+    sonar_instance_url:
+        description: "The URL of the sonar instance to wake up"
+        required: true
+
+runs:
+    using: composite
+    steps:
+        - name: Wake up sonar instance
+          id: wakeup-sonar
+          shell: bash
+          env:
+              SONAR_INSTANCE_URL: ${{ inputs.sonar_instance_url }}
+          run: ${{github.action_path}}/wakeup-sonar.sh
