@@ -5,6 +5,8 @@
 
 STATUS=$(curl -s -o /dev/null -w "%{http_code}" $SONAR_INSTANCE_URL)
 
+echo "Sonar URL is $SONAR_INSTANCE_URL"
+
 if [ $STATUS -ne 200 ]; then
   echo "Sonar is down, waking it up"
   # Try to curl 6 times with 10 secondes interval before giving up
